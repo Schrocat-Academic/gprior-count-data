@@ -1,0 +1,14 @@
+noncontdata.R is a module implementing the Albert and Chibb algorithm 
+(J.H. Albert and S. Chib, Journal of the American statistical Association},
+vol.88, no.422, pp.669--679, 1993)
+so that ARTIVA can apply its Gaussian priors method to integer data.
+
+Insert
+if (correctGaussianprior) source("/Users/walkerm1/work/ARTIVA/code/noncontdata.R")
+at line 41 in main.R in ARTIVA package, and
+
+#HACK: Call module for binary and count targets here.
+if (correctGaussianprior) Y = noncontARTIVA(s, E, Sall, Ball, X, Y, GLOBvar$Mphase)
+at line 59.
+Also add "correctGaussianprior=TRUE" to input parameters of main <- function() and to all functions called upstream of it, namely ARTIVAnet() and 
+ARTIVAsubnet().
